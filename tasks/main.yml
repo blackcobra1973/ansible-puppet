@@ -37,6 +37,15 @@
     - install
     - packages
 
+- name: Install puppet via emerge
+  portage: package={{ item }} state={{ puppet_package_state }} update=yes
+  with_items:
+    - "{{ puppet_package_list }}"
+  when: ansible_os_family == 'Gentoo'
+  tags:
+    - install
+    - packages
+
 - name: Disable puppet service
   service: name=puppet enabled=no state=stopped
   tags:
