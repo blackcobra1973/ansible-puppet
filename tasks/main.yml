@@ -46,17 +46,19 @@
     - install
     - packages
 
-- name: Disable puppet service
-  service: name=puppet enabled=no state=stopped
-  tags:
-    - service
-    - disable
+### Enable/Disabling puppet is handled by puppet
 
-- name: Enable puppet service
-  service: name=puppet enabled=yes state=started
-  tags:
-    - service
-    - enable
+#- name: Disable puppet service
+#  service: name=puppet enabled=no state=stopped
+#  tags:
+#    - service
+#    - disable
+
+#- name: Enable puppet service
+#  service: name=puppet enabled=yes state=started
+#  tags:
+#    - service
+#    - enable
 
 # The puppet agent return codes are interesting
 #
@@ -72,8 +74,9 @@
 # Credit to Alex Schultz github.com/mwhahaha
 
 - name: Force run of puppet agent
-  command: /usr/bin/puppet agent apply --test --color=false --server={{ puppet_master }} --environment={{ puppet_environment }} --waitforcert {{ puppet_waitforcert }}
+  command: /usr/bin/puppet agent --test --color=false --server={{ puppet_master }} --environment={{ puppet_environment }} --waitforcert {{ puppet_waitforcert }}
   register: puppet_agent_apply
   failed_when: not puppet_agent_apply.rc in [0, 2]
   tags:
     - run
+
