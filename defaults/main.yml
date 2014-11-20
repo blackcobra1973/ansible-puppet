@@ -7,5 +7,5 @@ puppet_release_rpm_baseurl: http://yum.puppetlabs.com
 puppet_release_apt_baseurl: http://apt.puppetlabs.com
 puppet_package_state: present
 puppet_master: puppet
-puppet_environment:
+puppet_environment: production
 puppet_waitforcert: 60
