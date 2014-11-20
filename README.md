@@ -1,6 +1,12 @@
-ansible-galaxy.ubuntu.puppet
+ansible-puppet
 ============================
 
-Ansible Galaxy role for installing Puppet on Ubuntu and Fedora derivatives.
+Ansible role for installing Puppet on Ubuntu and Fedora derivatives.
 
 Fedora derivates support added by Greg Swift
+
+### Todo
+
+- Gentoo Support
+- FreeBSD Support
+
