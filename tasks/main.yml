@@ -49,14 +49,12 @@
 - name: Disable puppet service
   service: name=puppet enabled=no state=stopped
   tags:
-    - install
     - service
     - disable
 
 - name: Enable puppet service
   service: name=puppet enabled=yes state=started
   tags:
-    - install
     - service
     - enable
 
